@@ -53,6 +53,9 @@ detect_ralink() {
 	MT7688)
 		write_ralink mt_wifi mt7628 ra0 11g 7
 		;;
+	MT7628AN)
+		write_ralink mt_wifi mt7628 ra0 11g 7
+		;;
 	esac
 
 	return 0
