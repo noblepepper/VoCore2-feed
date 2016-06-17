@@ -2,6 +2,7 @@
 # See /LICENSE for more information.
 
 include $(TOPDIR)/rules.mk
+include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=mtk-pinmux
 PKG_RELEASE:=1
@@ -9,11 +10,14 @@ PKG_RELEASE:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/mtk-pinmux
+  SECTION:=ralink
+  CATEGORY:=Ralink SDK
   TITLE:=MTK pinmux and reclk utilities
-  HIDDEN:=0
   DEPENDS:=@TARGET_ramips_mt7688_LinkIt7688||@TARGET_ramips_mt7628
-  CATEGORY:=Base system
-  DEFAULT:=y
+endef
+
+define Package/mtk-sdk-wifi/description
+ Utilities to manipulate pinmux assignments
 endef
 
 define Build/Prepare
@@ -30,7 +34,6 @@ define Package/mtk-pinmux/install
 	
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/pinmux $(1)/sbin/mt76x8_pinmux
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/refclk $(1)/sbin/mt76x8_reclk
-	$(CP) ./files/* $(1)
 endef
 
 $(eval $(call BuildPackage,mtk-pinmux))
