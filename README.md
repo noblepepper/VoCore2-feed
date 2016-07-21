@@ -1,11 +1,11 @@
 # VoCore2-feed
-This feeds holds the SDK wifi driver and config VoCore2 and some other handy utilities.
+This feeds holds the SDK wifi driver and config for VoCore2 and some other handy utilities.
 
 It is shamelessly plagarized from MediaTek-Labs/linkit-smart-7688-feed which works great so any problems you have were probably caused by me.
 
 # Build the firmware from sources
 
-This section describes how to build the firmware for VoCore from source codes.
+This section describes how to build the firmware for the VoCore2 from source codes.
 
 
 ### Host environment
@@ -29,7 +29,7 @@ In the Ubuntu system, open the *Terminal* application and type the following com
 3. Update the feed information of all available packages for building the firmware:
     
     ```
-    $ ./scripts/feeds update
+    $ ./scripts/feeds update -a
     ```
 4. Install all packages:
     
