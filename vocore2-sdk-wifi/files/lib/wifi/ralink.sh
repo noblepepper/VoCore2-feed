@@ -37,7 +37,6 @@ config wifi-iface sta
 	option mode	sta
 	option network  wan
 	option ifname   $sta
-	option led 	mediatek:orange:wifi
 	option ssid	UplinkAp
 	option key	SecretKey
 	option encryption psk
