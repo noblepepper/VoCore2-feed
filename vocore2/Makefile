@@ -22,7 +22,6 @@ define Package/VoCore2
 	+kmod-nls-iso8859-15 +kmod-nls-iso8859-2 +kmod-nls-utf8 \
 	+kmod-sdhci-mt7620 +kmod-usb-storage \
 	+kmod-video-core +kmod-video-uvc \
-	+kmod-sound-core +kmod-sound-mtk +madplay-alsa +alsa-utils \
 	+mtk-sdk-wifi +tcpdump-mini
 
   CATEGORY:=Base system
