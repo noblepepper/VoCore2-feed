@@ -1,9 +1,11 @@
-# linkit-smart-feed
-This feeds holds the SDK wifi driver and the config/meta package for the LinkIt Smart 7688 (Duo)
+# VoCore2-feed
+This feeds holds the SDK wifi driver and config VoCore2 and some other handy utilities.
+
+It is shamelessly plagarized from MediaTek-Labs/linkit-smart-7688-feed which works great so any problems you have were probably caused by me.
 
 # Build the firmware from sources
 
-This section describes how to build the firmware for LinkIt Smart 7688 and LinkIt Smart 7688 Duo from source codes.
+This section describes how to build the firmware for VoCore from source codes.
 
 
 ### Host environment
@@ -20,48 +22,36 @@ In the Ubuntu system, open the *Terminal* application and type the following com
     $ sudo apt-get install git g++ make libncurses5-dev subversion libssl-dev gawk libxml-parser-perl unzip wget python xz-utils
     ```
 
-2. Download OpenWrt CC source codes:
+2. Download modified OpenWrt CC source codes:
     ```
-    $ git clone git://git.openwrt.org/15.05/openwrt.git
+    $ git clone https://github.com/noblepepper/openwrt-chaoscalmer
     ```
-    
-3. Prepare the default configuration file for feeds:
-    ```
-    $ cd openwrt
-    $ cp feeds.conf.default feeds.conf
-    ```
-    
-4. Add the LinkIt Smart 7688 feed:
-    
-    ```
-    $ echo src-git linkit https://github.com/MediaTek-Labs/linkit-smart-7688-feed.git >> feeds.conf
-    ```
-5. Update the feed information of all available packages for building the firmware:
+3. Update the feed information of all available packages for building the firmware:
     
     ```
     $ ./scripts/feeds update
     ```
-6. Install all packages:
+4. Install all packages:
     
     ```
     $ ./scripts/feeds install -a
     ```
-7. Prepare the kernel configuration to inform OpenWrt that we want to build an firmware for LinkIt Smart 7688:
+5. Prepare the kernel configuration to inform OpenWrt that we want to build an firmware for VoCore2:
     
     ```
     $ make menuconfig
     ```
     * Select the options as below:
         * Target System: `Ralink RT288x/RT3xxx`
-        * Subtarget: `MT7688 based boards`
-        * Target Profile: `LinkIt7688`
+        * Subtarget: `MT7628 based boards`
+        * Target Profile: `VoCore2`
     * Save and exit (**use the deafult config file name without changing it**)
 8. Start the compilation process:
     
     ```
     $ make V=99
     ```
-9. After the build process completes, the resulted firmware file will be under `bin/ramips/openwrt-ramips-mt7688-LinkIt7688-squashfs-sysupgrade.bin`. Depending on the H/W resources of the host environment, the build process may **take more than 2 hours**.
+9. After the build process completes, the resulted firmware file will be under `bin/ramips/openwrt-ramips-mt7628-vocore2-squashfs-sysupgrade.bin`. Depending on the H/W resources of the host environment, the build process may **take more than 2 hours**.
 
-10. You can use this file to do the firmware upgrade through the Web UI. Or rename it to `lks7688.img` for upgrading through a USB drive.
+10. You can use this file to do the firmware upgrade with sysupgrade or through Luci. You can also put it on a USB thumb drive and rename it to `root_uImage` for upgrading through das U-boot.
 

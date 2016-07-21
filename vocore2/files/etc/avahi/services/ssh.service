@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
 <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
 <service-group>
- <name replace-wildcards="yes">LinkIt Smart7688 SSH on %h</name>
+ <name replace-wildcards="yes">VoCore2 SSH on %h</name>
   <service>
    <type>_ssh._tcp</type>
    <port>22</port>
