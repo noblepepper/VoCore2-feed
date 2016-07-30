@@ -1,0 +1,10 @@
+#!/bin/sh
+
+. /lib/functions.sh
+. /lib/functions/system.sh
+
+uci set system.@system[-1].hostname="vocore2"
+uci set network.wwan=interface
+uci set network.wwan.proto=dhcp
+
+uci commit
