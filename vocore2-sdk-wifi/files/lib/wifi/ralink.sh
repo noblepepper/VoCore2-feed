@@ -22,15 +22,15 @@ config wifi-device	radio0
 	option hwmode	$mode
 	option htmode	HT40
 	option channel  auto
-	option disabled	1
 
 config wifi-iface ap
 	option device   radio0
 	option mode	ap
 	option network  lan
 	option ifname   $dev
-	option ssid	OpenWrt
-	option encryption none 
+	option ssid	VoCore2
+	option key	'12345678'
+	option encryption psk
 
 config wifi-iface sta
 	option device   radio0
