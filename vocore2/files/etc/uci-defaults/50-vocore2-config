@@ -7,4 +7,18 @@ uci set system.@system[-1].hostname="vocore2"
 uci set network.wwan=interface
 uci set network.wwan.proto=dhcp
 
+uci set system.led_wifi=led
+uci set system.led_wifi.sysfs='VoCore2:pink:wifi'
+uci set system.led_wifi.dev='apcli0'
+uci set system.led_wifi.trigger='netdev'
+uci set system.led_wifi.mode='link'
+uci set system.led_wifi.name='WIFI'
+
+uci set system.led_eth=led
+uci set system.led_eth.sysfs='VoCore2:green:eth0'
+uci set system.led_eth.dev='eth0'
+uci set system.led_eth.trigger='netdev'
+uci set system.led_eth.mode='link tx rx'
+uci set system.led_eth.name='ETH'
+
 uci commit
