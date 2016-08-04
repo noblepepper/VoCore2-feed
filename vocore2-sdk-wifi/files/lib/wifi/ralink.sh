@@ -37,7 +37,6 @@ config wifi-iface sta
 	option mode	sta
 	option network  wwan
 	option ifname   $sta
-	option led	VoCore2:pink:wifi
 	option ssid	UplinkAp
 	option key	SecretKey
 	option encryption psk
