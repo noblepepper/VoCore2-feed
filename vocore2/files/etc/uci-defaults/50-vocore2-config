@@ -3,6 +3,18 @@
 . /lib/functions.sh
 . /lib/functions/system.sh
 
+sed -i '/VoCore2/d' /etc/opkg/distfeeds.conf
+
+echo 'src/gz vocore2_base http://noblepepper.com/repositories/0_2/packages/base' > /etc/opkg/customfeeds
+echo 'src/gz vocore2_telephony http://noblepepper.com/repositories/0_2/packages/telephony' >> /etc/opkg/customfeeds
+echo 'src/gz vocore2_VoCore2 http://noblepepper.com/repositories/0_2/packages/VoCore2' >> /etc/opkg/customfeeds
+echo 'src/gz vocore2_packages http://noblepepper.com/repositories/0_2/packages/packages' >> /etc/opkg/customfeeds
+echo 'src/gz vocore2_routing http://noblepepper.com/repositories/0_2/packages/routing' >> /etc/opkg/customfeeds
+echo 'src/gz vocore2_luci http://noblepepper.com/repositories/0_2/packages/luci' >> /etc/opkg/customfeeds
+echo 'src/gz vocore2_management http://noblepepper.com/repositories/0_2/packages/management' >> /etc/opkg/customfeeds
+
+
+
 uci set system.@system[-1].hostname="vocore2"
 uci set network.wwan=interface
 uci set network.wwan.proto=dhcp
