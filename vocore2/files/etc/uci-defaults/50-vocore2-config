@@ -5,6 +5,8 @@
 
 sed -i '/VoCore2/d' /etc/opkg/distfeeds.conf
 
+sed -i -e 's/root::/root:$1$nClfHNjC$V458KFdeS8bMgeo1f15sM.:/g' /etc/shadow
+
 echo 'src/gz vocore2_base http://noblepepper.com/repositories/0_2/packages/base' > /etc/opkg/customfeeds.conf
 echo 'src/gz vocore2_telephony http://noblepepper.com/repositories/0_2/packages/telephony' >> /etc/opkg/customfeeds.conf
 echo 'src/gz vocore2_VoCore2 http://noblepepper.com/repositories/0_2/packages/VoCore2' >> /etc/opkg/customfeeds.conf
