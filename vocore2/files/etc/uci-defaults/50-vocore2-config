@@ -7,13 +7,13 @@ sed -i '/VoCore2/d' /etc/opkg/distfeeds.conf
 
 sed -i -e 's/root::/root:$1$nClfHNjC$V458KFdeS8bMgeo1f15sM.:/g' /etc/shadow
 
-echo 'src/gz vocore2_base http://noblepepper.com/repositories/latest/packages/base' > /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_telephony http://noblepepper.com/repositories/latest/packages/telephony' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_VoCore2 http://noblepepper.com/repositories/latest/packages/VoCore2' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_packages http://noblepepper.com/repositories/latest/packages/packages' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_routing http://noblepepper.com/repositories/latest/packages/routing' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_luci http://noblepepper.com/repositories/latest/packages/luci' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_management http://noblepepper.com/repositories/latest/packages/management' >> /etc/opkg/customfeeds.conf
+echo 'src/gz vocore2_base http://noblepepper.com/repositories/0_4/packages/base' > /etc/opkg/customfeeds.conf
+echo 'src/gz vocore2_telephony http://noblepepper.com/repositories/0_4/packages/telephony' >> /etc/opkg/customfeeds.conf
+echo 'src/gz vocore2_VoCore2 http://noblepepper.com/repositories/0_4/packages/VoCore2' >> /etc/opkg/customfeeds.conf
+echo 'src/gz vocore2_packages http://noblepepper.com/repositories/0_4/packages/packages' >> /etc/opkg/customfeeds.conf
+echo 'src/gz vocore2_routing http://noblepepper.com/repositories/0_4/packages/routing' >> /etc/opkg/customfeeds.conf
+echo 'src/gz vocore2_luci http://noblepepper.com/repositories/0_4/packages/luci' >> /etc/opkg/customfeeds.conf
+echo 'src/gz vocore2_management http://noblepepper.com/repositories/0_4/packages/management' >> /etc/opkg/customfeeds.conf
 
 mv /etc/opkg/distfeeds.conf /etc/opkg/distfeeds.conf.orig
 
