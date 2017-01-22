@@ -7,19 +7,8 @@ sed -i '/VoCore2/d' /etc/opkg/distfeeds.conf
 
 sed -i -e 's/root::/root:$1$nClfHNjC$V458KFdeS8bMgeo1f15sM.:/g' /etc/shadow
 
-echo 'src/gz vocore2_base http://noblepepper.com/repositories/0_4/packages/base' > /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_telephony http://noblepepper.com/repositories/0_4/packages/telephony' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_VoCore2 http://noblepepper.com/repositories/0_4/packages/VoCore2' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_packages http://noblepepper.com/repositories/0_4/packages/packages' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_routing http://noblepepper.com/repositories/0_4/packages/routing' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_luci http://noblepepper.com/repositories/0_4/packages/luci' >> /etc/opkg/customfeeds.conf
-echo 'src/gz vocore2_management http://noblepepper.com/repositories/0_4/packages/management' >> /etc/opkg/customfeeds.conf
-
-mv /etc/opkg/distfeeds.conf /etc/opkg/distfeeds.conf.orig
-
-
 uci set system.@system[-1].hostname="vocore2"
-uci set network.wwan=interface
+uci set network.wwan=interfaceuci set network.wwan.proto=dhcp
 uci set network.wwan.proto=dhcp
 
 uci set system.led_wifi=led
@@ -29,11 +18,29 @@ uci set system.led_wifi.trigger='netdev'
 uci set system.led_wifi.mode='link'
 uci set system.led_wifi.name='WIFI'
 
-uci set system.led_eth=led
-uci set system.led_eth.sysfs='VoCore2:green:eth0'
-uci set system.led_eth.dev='eth0'
-uci set system.led_eth.trigger='netdev'
-uci set system.led_eth.mode='link tx rx'
-uci set system.led_eth.name='ETH'
+if [ "$(uci -q get wireless.ap)" != "wifi-iface" ]; then
+	uci set wireless.ap=wifi-iface
+	uci set wireless.ap.device='radio0'
+	uci set wireless.ap.mode='ap'
+	uci set wireless.ap.network='lan'
+	uci set wireless.ap.ifname='ra0'
+	uci set wireless.ap.ssid='VoCore2'
+	uci set wireless.ap.key='12345678'
+	uci set wireless.ap.encryption='psk2'
+	uci set wireless.ap.disabled='0'
+fi
+
+if [ "$(uci -q get wireless.sta)" != "wifi-iface" ]; then
+	uci set wireless.sta=wifi-iface
+	uci set wireless.sta.device='radio0'
+	uci set wireless.sta.mode='sta'
+	uci set wireless.sta.network='lan wwan'
+	uci set wireless.sta.ifname='apcli0'
+	uci set wireless.sta.ssid='UplinkAp'
+	uci set wireless.sta.encryption='psk2'
+	uci set wireless.sta.key='SecretKey'
+	uci set wireless.sta.disabled='1'
+fi
 
 uci commit
+

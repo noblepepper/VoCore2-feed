@@ -1,0 +1,11 @@
+uci set wireless.sta.disabled=0
+uci commit
+/etc/init.d/network restart
+sleep 10
+uci set wireless.sta.disabled=1
+uci commit
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+exit 0
+
