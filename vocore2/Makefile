@@ -22,7 +22,7 @@ define Package/VoCore2
 	+kmod-nls-iso8859-15 +kmod-nls-iso8859-2 +kmod-nls-utf8 \
 	+kmod-usb-storage \
 	+kmod-video-core +kmod-video-uvc \
-	+python-mini \
+	+python-light \
 	+mtk-sdk-wifi +tcpdump-mini
 
   CATEGORY:=Base system
