@@ -5,10 +5,24 @@
 
 sed -i '/VoCore2/d' /etc/opkg/distfeeds.conf
 
-sed -i -e 's/root::/root:$1$nClfHNjC$V458KFdeS8bMgeo1f15sM.:/g' /etc/shadow
+if [ -n "$(grep 'root::' /etc/shadow)" ]; then
+	sed -i -e 's/root::/root:$1$nClfHNjC$V458KFdeS8bMgeo1f15sM.:/g' /etc/shadow
+fi
+
+
+echo 'uci set wireless.sta.disabled=0' > /etc/rc.local
+echo 'uci commit' >> /etc/rc.local
+echo '/etc/init.d/network restart' >> /etc/rc.local
+echo 'sleep 10' >> /etc/rc.local
+echo 'uci set wireless.sta.disabled=1' >> /etc/rc.local
+echo 'uci commit' >> /etc/rc.local
+echo '# Put your custom commands here that should be executed once' >> /etc/rc.local
+echo '# the system init finished. By default this file does nothing.' >> /etc/rc.local
+echo  >> /etc/rc.local
+echo 'exit 0' >> /etc/rc.local
 
 uci set system.@system[-1].hostname="vocore2"
-uci set network.wwan=interfaceuci set network.wwan.proto=dhcp
+uci set network.wwan=interface
 uci set network.wwan.proto=dhcp
 
 uci set system.led_wifi=led
@@ -17,6 +31,9 @@ uci set system.led_wifi.dev='apcli0'
 uci set system.led_wifi.trigger='netdev'
 uci set system.led_wifi.mode='link'
 uci set system.led_wifi.name='WIFI'
+uci set wireless.radio0.disabled='0'
+
+uci delete wireless.default_radio0
 
 if [ "$(uci -q get wireless.ap)" != "wifi-iface" ]; then
 	uci set wireless.ap=wifi-iface
@@ -41,6 +58,4 @@ if [ "$(uci -q get wireless.sta)" != "wifi-iface" ]; then
 	uci set wireless.sta.key='SecretKey'
 	uci set wireless.sta.disabled='1'
 fi
-
 uci commit
-
