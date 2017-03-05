@@ -10,7 +10,6 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/VoCore2
   TITLE:=VoCore2
-  HIDDEN:=1
   DEPENDS:=@TARGET_ramips_mt7688_LinkIt7688||@TARGET_ramips_mt7628 \
   	+gdbserver +curl +strace +coreutils +coreutils-stty \
   	+avahi-nodbus-daemon +mountd +mjpg-streamer \
