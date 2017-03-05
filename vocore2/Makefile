@@ -28,6 +28,11 @@ define Package/VoCore2
   DEFAULT:=y
 endef
 
+define Package/VoCore2/Description
+	Selects packages for the VoCore2 includes-
+	Avahi, Mjpg Streamer, Samba, Luci, File system support,
+endef
+
 define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
 endef
