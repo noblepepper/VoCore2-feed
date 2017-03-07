@@ -16,7 +16,7 @@ define Package/mtk-pinmux
   DEPENDS:=@TARGET_ramips_mt7688_LinkIt7688||@TARGET_ramips_mt7628
 endef
 
-define Package/mtk-pinmux/description
+define Package/mtk-sdk-wifi/description
  Utilities to manipulate pinmux assignments
 endef
 
