@@ -20,7 +20,7 @@ define Package/VoCore2
 	+kmod-fs-vfat +kmod-fs-exfat +kmod-i2c-core +kmod-i2c-ralink \
 	+kmod-nls-base +kmod-nls-cp437 +kmod-nls-iso8859-1 \
 	+kmod-nls-iso8859-15 +kmod-nls-iso8859-2 +kmod-nls-utf8 \
-	+kmod-sdhci-mt7620 +kmod-usb-storage \
+	+kmod-usb-storage \
 	+kmod-video-core +kmod-video-uvc \
 	+mtk-sdk-wifi +tcpdump-mini
 
