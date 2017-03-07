@@ -30,7 +30,7 @@ config wifi-iface ap
 	option ifname   $dev
 	option ssid	VoCore2
 	option key	'12345678'
-	option encryption psk
+	option encryption psk2
 
 config wifi-iface sta
 	option device   radio0
@@ -39,7 +39,7 @@ config wifi-iface sta
 	option ifname   $sta
 	option ssid	UplinkAp
 	option key	SecretKey
-	option encryption psk
+	option encryption psk2
 	option disabled	1
 EOF
 }
